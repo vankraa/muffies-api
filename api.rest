@@ -1,0 +1,133 @@
+### Create a new customer
+POST http://localhost:3000/customers
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "password123",
+  "address": "123 Main St",
+  "phone": "123-456-7890"
+}
+
+### Get all customers
+GET http://localhost:3000/customers
+Authorization: Bearer MY_AUTH_TOKEN
+
+### Get a customer by ID
+GET http://localhost:3000/customers/1
+Authorization: Bearer MY_AUTH_TOKEN
+
+### Update a customer
+PUT http://localhost:3000/customers/1
+Content-Type: application/json
+Authorization: Bearer MY_AUTH_TOKEN
+
+{
+  "name": "John Doe Updated",
+  "email": "john.doe.updated@example.com",
+  "password": "newpassword123",
+  "address": "456 Elm St",
+  "phone": "987-654-3210"
+}
+
+### Delete a customer
+DELETE http://localhost:3000/customers/1
+Authorization: Bearer MY_AUTH_TOKEN
+
+### List all products
+GET http://localhost:3000/products
+Authorization: Bearer MY_AUTH_TOKEN
+
+### Get a product by ID
+GET http://localhost:3000/products/1
+Authorization: Bearer MY_AUTH_TOKEN
+
+### Create a new product
+POST http://localhost:3000/products
+Content-Type: application/json
+Authorization: Bearer MY_AUTH_TOKEN
+
+{
+  "name": "Chocolate Chip Cookies",
+  "price_per_item": 10.00,
+  "bulk_deal": {
+    "10": 90.00
+  },
+  "recipe_id": 1,
+  "nutrition_info_id": 1
+}
+
+### Update a product
+PUT http://localhost:3000/products/1
+Content-Type: application/json
+Authorization: Bearer MY_AUTH_TOKEN
+
+{
+  "name": "Updated Product Name",
+  "price_per_item": 12.00,
+  "bulk_deal": {
+    "10": 100.00
+  },
+  "recipe_id": 2,
+  "nutrition_info_id": 2
+}
+
+### Delete a product
+DELETE http://localhost:3000/products/1
+Authorization: Bearer MY_AUTH_TOKEN
+
+### Get shopping cart items for a user
+GET http://localhost:3000/cart
+Authorization: Bearer MY_AUTH_TOKEN
+
+### Add a product to the shopping cart
+POST http://localhost:3000/cart
+Content-Type: application/json
+Authorization: Bearer MY_AUTH_TOKEN
+
+{
+  "product_id": 1,
+  "quantity": 2
+}
+
+### Remove a product from the shopping cart
+DELETE http://localhost:3000/cart/1
+Authorization: Bearer MY_AUTH_TOKEN
+
+### List all orders
+GET http://localhost:3000/orders
+Authorization: Bearer MY_AUTH_TOKEN
+
+### Create a new order
+POST http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer MY_AUTH_TOKEN
+
+{
+  "customer_id": 1,
+  "total_amount": 50.00,
+  "deliver_by": "2024-08-01",
+  "deliver_to": "123 Main St, Apt 4B, New York, NY 10001",
+  "status": "Pending"
+}
+
+### Get an order by ID
+GET http://localhost:3000/orders/1
+Authorization: Bearer MY_AUTH_TOKEN
+
+### Update an order
+PUT http://localhost:3000/orders/1
+Content-Type: application/json
+Authorization: Bearer MY_AUTH_TOKEN
+
+{
+  "total_amount": 55.00,
+  "deliver_by": "2024-08-05",
+  "deliver_to": "456 Elm St, New York, NY 10001",
+  "status": "Shipped"
+}
+
+### Delete an order
+DELETE http://localhost:3000/orders/1
+Authorization: Bearer MY_AUTH_TOKEN
