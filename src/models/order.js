@@ -6,34 +6,39 @@ const Order = sequelize.define('Order', {
   order_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
   },
   customer_id: {
     type: DataTypes.INTEGER,
+    allowNull: false,
     references: {
       model: Customer,
-      key: 'customer_id'
-    }
-  },
-  order_date: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  },
-  total_amount: {
-    type: DataTypes.DECIMAL(10, 2),
-    allowNull: false
-  },
-  deliver_by: {
-    type: DataTypes.DATE
+      key: 'customer_id',
+    },
   },
   deliver_to: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+    allowNull: true,
   },
   status: {
-    type: DataTypes.STRING(16)
-  }
+    type: DataTypes.ENUM('pending', 'completed', 'cancelled'),
+    allowNull: true,
+  },
+  total_amount: {
+    type: DataTypes.DECIMAL,
+    allowNull: true,
+  },
+  created_at: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  updated_at: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
 }, {
-  timestamps: true
+  tableName: 'orders',
+  timestamps: false,
 });
 
 module.exports = Order;

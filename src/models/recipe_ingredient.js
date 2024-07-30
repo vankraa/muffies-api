@@ -3,19 +3,29 @@ const sequelize = require('../config/database');
 const Recipe = require('./recipe');
 const NutritionInfo = require('./nutrition_info');
 
-const Product = sequelize.define('Product', {
-  product_id: {
+const RecipeIngredient = sequelize.define('RecipeIngredient', {
+  recipe_ingredient_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
   recipe_id: {
     type: DataTypes.INTEGER,
-    allowNull: true,
+    allowNull: false,
+    unique: true,
     references: {
       model: Recipe,
       key: 'recipe_id',
     },
+  },
+  ingredient_name: {
+    type: DataTypes.STRING(100),
+    allowNull: false,
+    unique: true,
+  },
+  quantity: {
+    type: DataTypes.STRING(50),
+    allowNull: true,
   },
   nutrition_info_id: {
     type: DataTypes.INTEGER,
@@ -25,17 +35,9 @@ const Product = sequelize.define('Product', {
       key: 'nutrition_info_id',
     },
   },
-  created_at: {
-    type: DataTypes.DATE,
-    allowNull: true,
-  },
-  updated_at: {
-    type: DataTypes.DATE,
-    allowNull: true,
-  },
 }, {
-  tableName: 'products',
+  tableName: 'recipe_ingredients',
   timestamps: false,
 });
 
-module.exports = Product;
+module.exports = RecipeIngredient;
