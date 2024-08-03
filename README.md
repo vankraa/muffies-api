@@ -8,4 +8,4 @@ run docker image:
 docker-compose up
 ```
 
-please request .env file to run server
+Please request .env file to run server. .env file should be placed in the project root.
